@@ -6,6 +6,7 @@ import com.sun.source.util.TaskEvent.*;
 import com.sun.source.util.TreeScanner;
 import com.sun.tools.javac.api.*;
 import com.sun.tools.javac.code.*;
+import com.sun.tools.javac.code.Symbol.*;
 import com.sun.tools.javac.tree.*;
 import com.sun.tools.javac.tree.JCTree.*;
 import com.sun.tools.javac.util.*;
@@ -34,24 +35,20 @@ public class SneakyPlugin implements Plugin{
                         ){
                             JCBlock block = (JCBlock)node.getBody();
                             block.stats = block.stats.prepend(
-                                //if
-                                fac.at(((JCTree)node).pos).If(
-                                    //(true)
-                                    fac.Parens(fac.Literal(TypeTag.BOOLEAN, 1)),
+                                fac.at(((JCTree)node).pos).Exec(fac.Apply(
+                                    List.nil(),
 
-                                    //throw new RuntimeException("Sike! The program has out-sneaked you!")
-                                    fac.Throw(
-                                        fac.NewClass(
-                                            null,
-                                            List.nil(),
-                                            fac.Ident(names.fromString(RuntimeException.class.getSimpleName())),
-                                            List.of(fac.Literal(TypeTag.CLASS, "Sike! The program has out-sneaked you!")),
-                                            null
-                                        )
+                                    fac.Select(
+                                        fac.Select(
+                                            fac.Ident(names.fromString("System")), //System
+                                            names.fromString("out") //.out
+                                        ),
+
+                                        names.fromString("println") //.println
                                     ),
 
-                                    null
-                                )
+                                    List.of(fac.Literal(TypeTag.CLASS, "I'm sneaking on you...")) //"I'm sneaking on you..."
+                                ))
                             );
                         }
 

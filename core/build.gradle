@@ -9,8 +9,14 @@ ext {
 }
 
 dependencies {
+    annotationProcessor 'com.github.bsideup.jabel:jabel-javac-plugin:0.4.1'
+
     compileOnly project(':plugin')
     annotationProcessor project(':plugin')
+}
+
+repositories {
+    mavenCentral()
 }
 
 tasks.withType(JavaCompile) {
