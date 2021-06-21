@@ -34,9 +34,9 @@ public class SneakyPlugin implements Plugin{
                         ){
                             JCBlock block = (JCBlock)node.getBody();
                             block.stats = block.stats.prepend(
-                                //if(...
+                                //if
                                 fac.at(((JCTree)node).pos).If(
-                                    //true
+                                    //(true)
                                     fac.Parens(fac.Literal(TypeTag.BOOLEAN, 1)),
 
                                     //throw new RuntimeException("Sike!")
