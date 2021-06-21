@@ -1,0 +1,4 @@
+rootProject.name = 'sneaky'
+
+include ':core'
+include ':plugin'

@@ -1,0 +1,21 @@
+buildscript {
+    dependencies {
+        classpath 'com.github.bsideup.jabel:jabel-javac-plugin:0.4.1'
+    }
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+allprojects {
+    apply plugin: 'java'
+
+    dependencies {
+        annotationProcessor 'com.github.bsideup.jabel:jabel-javac-plugin:0.4.1'
+    }
+
+    repositories {
+        mavenCentral()
+    }
+}

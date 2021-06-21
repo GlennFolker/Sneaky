@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+}
+
+sourceSets.main.java.srcDirs = ['src/']
+
+ext {
+    mainClass = 'sneaky.Sneaky'
+}
+
+dependencies {
+    compileOnly project(':plugin')
+    annotationProcessor project(':plugin')
+}
+
+tasks.withType(JavaCompile) {
+    sourceCompatibility = 16
+    targetCompatibility = 8
+
+    if(JavaVersion.current() != JavaVersion.VERSION_1_8){
+        options.compilerArgs = [
+            '--release', '8',
+            '--enable-preview'
+        ]
+    }
+
+    doFirst {
+        options.compilerArgs = options.compilerArgs.findAll {
+            it != '--enable-preview'
+        }
+    }
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': mainClass
+    }
+}
+
+task run(type: JavaExec, dependsOn: [classes, configurations.runtimeClasspath]) {
+    main = mainClass
+    classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
+}
