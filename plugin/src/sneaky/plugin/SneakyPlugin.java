@@ -39,13 +39,13 @@ public class SneakyPlugin implements Plugin{
                                     //(true)
                                     fac.Parens(fac.Literal(TypeTag.BOOLEAN, 1)),
 
-                                    //throw new RuntimeException("Sike!")
+                                    //throw new RuntimeException("Sike! The program has out-sneaked you!")
                                     fac.Throw(
                                         fac.NewClass(
                                             null,
                                             List.nil(),
                                             fac.Ident(names.fromString(RuntimeException.class.getSimpleName())),
-                                            List.of(fac.Literal(TypeTag.CLASS, "Sike!")),
+                                            List.of(fac.Literal(TypeTag.CLASS, "Sike! The program has out-sneaked you!")),
                                             null
                                         )
                                     ),
