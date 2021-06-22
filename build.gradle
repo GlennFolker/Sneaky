@@ -7,3 +7,11 @@ buildscript {
         mavenCentral()
     }
 }
+
+subprojects {
+    apply plugin: 'java'
+
+    repositories {
+        mavenCentral()
+    }
+}

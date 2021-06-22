@@ -1,8 +1,7 @@
-plugins {
-    id 'java'
-}
-
 sourceSets.main.java.srcDirs = ['src/']
+
+sourceCompatibility = 16
+targetCompatibility = 8
 
 ext {
     mainClassName = 'sneaky.Sneaky'
@@ -24,16 +23,7 @@ tasks.withType(JavaCompile) {
     targetCompatibility = 8
 
     if(JavaVersion.current() != JavaVersion.VERSION_1_8){
-        options.compilerArgs = [
-            '--release', '8',
-            '--enable-preview'
-        ]
-    }
-
-    doFirst {
-        options.compilerArgs = options.compilerArgs.findAll {
-            it != '--enable-preview'
-        }
+        options.compilerArgs += ['--release', '8']
     }
 }
 

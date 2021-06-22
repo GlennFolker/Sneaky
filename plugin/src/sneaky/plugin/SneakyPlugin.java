@@ -6,7 +6,6 @@ import com.sun.source.util.TaskEvent.*;
 import com.sun.source.util.TreeScanner;
 import com.sun.tools.javac.api.*;
 import com.sun.tools.javac.code.*;
-import com.sun.tools.javac.code.Symbol.*;
 import com.sun.tools.javac.tree.*;
 import com.sun.tools.javac.tree.JCTree.*;
 import com.sun.tools.javac.util.*;
@@ -20,6 +19,7 @@ public class SneakyPlugin implements Plugin{
         TreeMaker fac = TreeMaker.instance(context);
         Names names = Names.instance(context);
 
+        //
         task.addTaskListener(new TaskListener(){
             @Override
             public void finished(TaskEvent e){

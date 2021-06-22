@@ -1,11 +1,10 @@
-plugins {
-    id 'java'
-}
-
 sourceSets.main {
     java.srcDirs = ['src/']
     resources.srcDirs = ['assets/']
 }
+
+sourceCompatibility = 8
+targetCompatibility = 8
 
 tasks.withType(JavaCompile) {
     sourceCompatibility = 8
