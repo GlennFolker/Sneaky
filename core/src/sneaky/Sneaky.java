@@ -48,6 +48,8 @@ public class Sneaky{
         }catch(Throwable e){
             throw new RuntimeException("An error occurred", e);
         }
+
+        System.out.println("By the way, I think this should print `java.lang.Object@<hashcode>`: '" + new Object() + "'.");
     }
 
     public static <T> T doTry(UnsafeProvider<T> value, T def){
