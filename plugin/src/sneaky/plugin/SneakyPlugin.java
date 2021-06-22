@@ -44,14 +44,14 @@ public class SneakyPlugin implements Plugin{
 
                                     fac.Select(
                                         fac.Select(
-                                            fac.Ident(names.fromString("System")), //System
-                                            names.fromString("out") //.out
+                                            fac.Ident(names.fromString("System")),
+                                            names.fromString("out")
                                         ),
 
-                                        names.fromString("println") //.println
+                                        names.fromString("println")
                                     ),
 
-                                    List.of(fac.Literal(TypeTag.CLASS, "I'm sneaking on you...")) //"I'm sneaking on you..."
+                                    List.of(fac.Literal(TypeTag.CLASS, "I'm sneaking on you..."))
                                 ))
                             );
                         }
